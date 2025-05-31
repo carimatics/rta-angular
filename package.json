@@ -9,7 +9,6 @@
     "test": "ng test",
     "serve:ssr:rta": "node dist/rta/server/server.mjs"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",

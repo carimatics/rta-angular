@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PokemonLATasksSimulatorPage } from './page';
+import { PokemonLATasksSimulatorPage } from './pokemon-la-tasks-simulator-page.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Page', () => {
   let component: PokemonLATasksSimulatorPage;
@@ -8,9 +9,9 @@ describe('Page', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokemonLATasksSimulatorPage]
-    })
-    .compileComponents();
+      imports: [PokemonLATasksSimulatorPage],
+      providers: [provideZonelessChangeDetection()]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokemonLATasksSimulatorPage);
     component = fixture.componentInstance;

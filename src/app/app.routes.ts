@@ -6,6 +6,6 @@ export const routes: Routes = [
     path: '', component: App,
   },
   {
-    path: 'pokemon', loadChildren: () => import('./pokemon/page.routes'),
+    path: 'pokemon', loadChildren: () => import('./pokemon/pokemon-page.routes'),
   },
 ];

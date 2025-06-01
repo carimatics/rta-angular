@@ -287,6 +287,10 @@ class PokemonLaTasksSimulatorService {
     this.currentPokemon().doTask(taskNo, progress, this.currentSegment());
   }
 
+  resetCurrentPokemonTask(taskNo: number): void {
+    this.currentPokemon().resetTask(taskNo);
+  }
+
   resetCurrentPokemonTasks(): void {
     this.currentPokemon().resetTasks();
   }

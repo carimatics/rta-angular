@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
     <div class="bg-surface underline text-error">Tasks Simulator</div>
   `,
 })
-export class PokemonLATasksSimulatorPage {
+export class PokemonLATasksSimulatorComponent {
 
 }
 
-export default PokemonLATasksSimulatorPage;
+export default PokemonLATasksSimulatorComponent;

@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { twMerge } from 'tailwind-merge';
+import { Component, computed, input } from '@angular/core';
+import { BaseComponent } from '../../../lib/components/base.component';
 
 @Component({
   selector: 'app-pokemon-la-header',
@@ -11,19 +11,9 @@ import { twMerge } from 'tailwind-merge';
     </header>
   `,
 })
-export class PokemonLAHeaderComponent {
-  private defaultClasses = 'z-50 flex h-14 w-full items-center';
-
-  class = input<string>();
-
-  hostClass(): string {
-    const customClasses = this.class();
-    return this.mergeClasses(customClasses);
-  }
-
-  private mergeClasses(customClasses: string | undefined): string {
-    return customClasses ? twMerge(this.defaultClasses, customClasses) : this.defaultClasses;
-  }
+export class PokemonLAHeaderComponent extends BaseComponent {
+  override class = input<string>();
+  override defaultClasses = computed(() => 'z-50 flex h-14 w-full items-center');
 }
 
 export default PokemonLAHeaderComponent;

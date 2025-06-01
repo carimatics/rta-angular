@@ -16,7 +16,7 @@ export class PokemonLAHeaderComponent {
 
   class = input<string>();
 
-  hostClass() {
+  hostClass(): string {
     const customClasses = this.class();
     return this.mergeClasses(customClasses);
   }

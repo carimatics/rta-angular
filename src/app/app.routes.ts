@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
-import { App } from './app.component';
 
 export const routes: Routes = [
   {
-    path: '', component: App,
-  },
-  {
-    path: 'pokemon', loadChildren: () => import('./pokemon/pokemon-page.routes'),
+    path: '',
+    loadComponent: () => import('./app.component'),
+    children: [
+      {
+        path: 'pokemon',
+        loadChildren: () => import('./pokemon/pokemon-page.routes'),
+      },
+    ]
   },
 ];

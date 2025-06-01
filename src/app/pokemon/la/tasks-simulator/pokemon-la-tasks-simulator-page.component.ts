@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-pokemon-la-tasks-simulator',
   imports: [],
-  template: `Tasks Simulator`,
+  template: `
+    <div class="bg-surface underline text-error">Tasks Simulator</div>
+  `,
 })
 export class PokemonLATasksSimulatorPage {
 

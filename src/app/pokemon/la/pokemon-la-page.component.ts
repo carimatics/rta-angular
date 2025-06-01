@@ -11,7 +11,7 @@ import PokemonLAHeaderComponent from './pokemon-la-header.component';
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface">
       <app-pokemon-la-header class="fixed top-0" />
-      <div class="bg-surface mt-14">
+      <div class="mt-14">
         <router-outlet />
       </div>
     </div>

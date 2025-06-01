@@ -12,7 +12,7 @@ import { twMerge } from 'tailwind-merge';
   `,
 })
 export class PokemonLAHeaderComponent {
-  private defaultClasses = 'bg-surface z-50 flex h-14 w-full items-center';
+  private defaultClasses = 'z-50 flex h-14 w-full items-center';
 
   class = input<string>();
 

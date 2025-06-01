@@ -12,13 +12,17 @@ import { twMerge } from 'tailwind-merge';
   `,
 })
 export class PokemonLAHeaderComponent {
-  private classDefault = 'bg-surface z-50 flex h-14 w-full items-center';
+  private defaultClasses = 'bg-surface z-50 flex h-14 w-full items-center';
 
   class = input<string>();
 
   hostClass() {
-    const classOverrides = this.class();
-    return classOverrides ? twMerge(this.classDefault, classOverrides) : this.classDefault;
+    const customClasses = this.class();
+    return this.mergeClasses(customClasses);
+  }
+
+  private mergeClasses(customClasses: string | undefined): string {
+    return customClasses ? twMerge(this.defaultClasses, customClasses) : this.defaultClasses;
   }
 }
 

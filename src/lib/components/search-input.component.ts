@@ -37,8 +37,7 @@ type SearchInputVariant = VariantProps<typeof searchInput>;
   selector: 'input[type="search"][libSearchInput]',
   imports: [],
   host: { '[class]': 'hostClass()' },
-  template: `
-    <ng-content />`
+  template: ``
 })
 export class SearchInputComponent extends BaseComponent {
   color = input<SearchInputVariant['color']>();

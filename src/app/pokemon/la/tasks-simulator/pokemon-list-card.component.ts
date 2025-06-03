@@ -1,4 +1,4 @@
-import { Component, computed, input, InputSignal, model, output, Signal } from '@angular/core';
+import { Component, computed, input, InputSignal, output, Signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { BaseComponent } from '../../../../lib/components/base.component';
@@ -17,7 +17,7 @@ import { PokemonImgComponent } from './pokemon-img.component';
     <ng-content>
       <div
         class="bg-primary hover:brightness-125 border border-outline flex gap-2 overflow-clip rounded-xl transition-all sase-out">
-        <img pokemonImg [pokemon]="pokemon()" />
+        <img pokemonImg [pokemon]="pokemon()" [alt]="pokemon().name()" />
         <div class="flex w-full flex-col pr-4 text-on-primary">
           <div class="mt-1 font-bold">No. {{ id() }}</div>
           <div class="font-bold">{{ name() }}</div>

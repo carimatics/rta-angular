@@ -1,4 +1,4 @@
-import { Component, computed, input, InputSignal, model, output, Signal } from '@angular/core';
+import { Component, computed, input, InputSignal, Signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { BaseComponent } from '../../../../lib/components/base.component';

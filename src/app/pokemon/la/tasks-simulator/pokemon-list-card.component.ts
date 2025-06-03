@@ -19,9 +19,9 @@ import { PokemonImgComponent } from './pokemon-img.component';
         class="bg-primary hover:brightness-125 border border-outline flex gap-2 overflow-clip rounded-xl transition-all sase-out">
         <img pokemonImg [pokemon]="pokemon()" [alt]="pokemon().name()" />
         <div class="flex w-full flex-col pr-4 text-on-primary">
-          <div class="mt-1 font-bold">No. {{ id() }}</div>
-          <div class="font-bold">{{ name() }}</div>
-          <div class="text-end">{{ points() }}</div>
+          <div class="mt-1 font-bold">No. {{ pokemon().id }}</div>
+          <div class="font-bold">{{ pokemon().name() }}</div>
+          <div class="text-end">{{ pokemon().points() }}</div>
         </div>
       </div>
     </ng-content>
@@ -30,10 +30,6 @@ import { PokemonImgComponent } from './pokemon-img.component';
 export class PokemonListCardComponent extends BaseComponent {
   pokemon = input.required<SignalizedPokemon>()
   click = output<void>();
-
-  id = computed(() => this.pokemon().id);
-  name = computed(() => this.pokemon().name());
-  points = computed(() => this.pokemon().points());
 
   override class: InputSignal<string | undefined> = input<string>();
   override defaultClasses: Signal<string> = computed<string>(() => 'gap-2 rounded-xl shadow-md hover:shadow-lg');

@@ -1,23 +1,27 @@
 import { Component, computed, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { createSignalizedPokedex } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
-import { NgOptimizedImage } from '@angular/common';
 import { PrimaryContainerComponent } from './primary-container.component';
 import { PokemonListComponent } from './pokemon-list.component';
 import { HeaderComponent } from '../header.component';
 import { SegmentSelectComponent } from './segment-select.component';
 import { TargetPointsInputComponent } from './target-points-input.component';
+import { PokemonImgComponent } from './pokemon-img.component';
+import { PokemonInfoComponent } from './pokemon-info.component';
+import { ButtonComponent } from '../../../../lib/components/button.component';
 
 @Component({
   selector: 'app-pokemon-la-tasks-simulator',
   imports: [
     FormsModule,
-    NgOptimizedImage,
     PrimaryContainerComponent,
     PokemonListComponent,
     HeaderComponent,
     SegmentSelectComponent,
     TargetPointsInputComponent,
+    PokemonImgComponent,
+    PokemonInfoComponent,
+    ButtonComponent,
   ],
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
@@ -47,37 +51,24 @@ import { TargetPointsInputComponent } from './target-points-input.component';
           </section>
           <section class="bg-surface-bright mx-2 mb-4 flex flex-col rounded-4xl p-4 shadow-lg">
             <div class="m-2 flex w-full">
-              <div class="flex flex-1 gap-2">
-                <img
-                  ngSrc="/pokemon/la/images/pokemon/{{service.currentPokemonId()}}.png"
-                  width="80"
-                  height="80"
-                  [alt]="service.currentPokemon().name()"
-                />
-                <div class="flex flex-col font-bold">
-                  <div>No. {{ service.currentPokemon().id }}</div>
-                  <div>{{ service.currentPokemon().name() }}</div>
-                  <div>{{ service.currentPokemon().points() }}</div>
-                </div>
-              </div>
-              <div>
-                <button
-                  type="reset"
-                  class="bg-error hover:bg-error-bright mr-8 cursor-pointer rounded-lg p-2 shadow-md hover:shadow-sm"
-                  (click)="service.currentPokemon().resetTasks()"
+              <app-pokemon-info [pokemon]="service.currentPokemon()" />
+              <button
+                libButton
+                color="error"
+                class="mr-8 size-10 flex items-center justify-center"
+                (click)="service.currentPokemon().resetTasks()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#ffff"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#ffff"
-                  >
-                    <path
-                      d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
+                </svg>
+              </button>
             </div>
             <div class="m-2 flex-1 overflow-x-scroll">
               <table class="w-full">

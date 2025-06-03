@@ -2,9 +2,7 @@ import { Component, computed, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { createSignalizedPokedex } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { NgOptimizedImage } from '@angular/common';
-import {
-  PrimaryContainerComponent
-} from './primary-container.component';
+import { PrimaryContainerComponent } from './primary-container.component';
 import { PokemonListComponent } from './pokemon-list.component';
 import { HeaderComponent } from '../header.component';
 
@@ -19,18 +17,18 @@ import { HeaderComponent } from '../header.component';
   ],
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
-      <app-pokemon-la-header class="fixed top-0" />
+      <app-header class="fixed top-0" />
       <div class="mt-14">
         <div class="flex">
           <aside class="flex h-[calc(100vh-60px)] w-80 flex-col">
-            <app-pokemon-la-tasks-simulator-pokemon-list
+            <app-pokemon-list
               [pokedex]="service.pokedex()"
               (clickPokemon)="service.currentPokemonId.set($event.id)"
             />
           </aside>
           <main class="mx-2 flex flex-1 flex-col">
             <section class="mx-2 mb-4 flex items-center gap-4">
-              <app-pokemon-la-tasks-simulator-primary-container
+              <app-primary-container
                 class="flex max-h-16 items-center gap-2">
                 <div class="font-bold">現在区間</div>
                 <select
@@ -41,8 +39,8 @@ import { HeaderComponent } from '../header.component';
                     <option [value]="segment.id">{{ segment.name }}</option>
                   }
                 </select>
-              </app-pokemon-la-tasks-simulator-primary-container>
-              <app-pokemon-la-tasks-simulator-primary-container
+              </app-primary-container>
+              <app-primary-container
                 class="flex max-h-16 items-center gap-2">
                 <div class="font-bold">目標点数</div>
                 <input
@@ -52,7 +50,7 @@ import { HeaderComponent } from '../header.component';
                   min="0"
                   class="caret-surface-container border-on-surface/40 placeholder-on-surface/40 w-20 flex-1 rounded-md border bg-white/10 p-1 px-2 py-1 shadow-md backdrop-blur-sm"
                 />
-              </app-pokemon-la-tasks-simulator-primary-container>
+              </app-primary-container>
             </section>
             <section class="bg-surface-bright mx-2 mb-4 flex flex-col rounded-4xl p-4 shadow-lg">
               <div class="m-2 flex w-full">

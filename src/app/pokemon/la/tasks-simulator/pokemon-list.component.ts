@@ -11,7 +11,7 @@ import { hiraganaToKatakana } from '../../../../lib/utils/change-case';
 import { twMerge } from 'tailwind-merge';
 
 @Component({
-  selector: 'app-pokemon-la-tasks-simulator-pokemon-list',
+  selector: 'app-pokemon-list',
   imports: [
     FormsModule,
     ButtonComponent,

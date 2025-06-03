@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BaseComponent } from '../../../../lib/components/base.component';
 
 @Component({
-  selector: 'app-pokemon-la-tasks-simulator-primary-container',
+  selector: 'app-primary-container',
   imports: [
     FormsModule,
   ],

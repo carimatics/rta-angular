@@ -2,7 +2,7 @@ import { Component, computed, input } from '@angular/core';
 import { BaseComponent } from '../../../lib/components/base.component';
 
 @Component({
-  selector: 'app-pokemon-la-header',
+  selector: 'app-header',
   imports: [],
   host: { '[class]': 'hostClass()' },
   template: `

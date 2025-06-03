@@ -78,8 +78,8 @@
     --color-on-primary-fixed-variant: #fff;
 
     /* Secondary */
-    --color-secondary: #7c7c7c;
-    --color-on-secondary: #ffffff;
+    --color-secondary: #2e44b5;
+    --color-on-secondary: #efe3e3;
     --color-secondary-container: #fbf8ea;
     --color-on-secondary-container: #283a4f;
     --color-secondary-fixed: #000000;
@@ -116,8 +116,8 @@
     --color-on-surface-variant: #345B89;
 
     /* Outline */
-    --color-outline: #2f6aae;
-    --color-outline-variant: #3b84dC;
+    --color-outline: #332d2d;
+    --color-outline-variant: #696d78;
 
     /* Inverse */
     --color-inverse-surface: #000;

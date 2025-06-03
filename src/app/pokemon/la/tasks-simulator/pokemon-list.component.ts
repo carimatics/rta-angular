@@ -19,10 +19,10 @@ import { twMerge } from 'tailwind-merge';
     SearchInputComponent,
   ],
   host: {
-    '[class]': 'hostClass()',
+    '[class]': "hostClass() + ' flex flex-col h-full'", // Added flex flex-col and h-full
   },
   template: `
-    <div class="mx-4 my-2">
+    <div class="mx-4 my-2"> <!-- Search bar part -->
       <div class="flex">
         <input
           libSearchInput
@@ -40,8 +40,8 @@ import { twMerge } from 'tailwind-merge';
         </button>
       </div>
     </div>
-    <div class="{{classListContainer()}}">
-      <ul class="{{classList()}}">
+    <div class="my-1 overflow-y-scroll flex-grow"> <!-- List part, flex-grow to take available space -->
+      <ul class="p-1 w-full">
         @for (pokemon of filteredPokemons(); track pokemon.id) {
           <li
             pokemonListCard
@@ -57,10 +57,7 @@ import { twMerge } from 'tailwind-merge';
 export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();
 
-  classListWidth = input<string>('w-80');
-  classListHeight = input<string>('h-[calc(100vh-112px)]');
-  classListContainer = computed(() => twMerge('my-1 overflow-y-scroll', this.classListHeight()));
-  classList = computed(() => twMerge('p-1', this.classListWidth()))
+  // Removed classListWidth, classListHeight, classListContainer, classList
 
   searchInputWord = model('');
   searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()))

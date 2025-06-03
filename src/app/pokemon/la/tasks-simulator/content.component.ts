@@ -2,20 +2,23 @@ import { Component, computed, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { createSignalizedPokedex } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { PrimaryContainerComponent } from './primary-container.component';
-import { PokemonListComponent } from './pokemon-list.component';
+// PokemonListComponent is now used within PokemonTasksLeftSidebarComponent
 import { HeaderComponent } from '../header.component';
 import { SegmentSelectComponent } from './segment-select.component';
 import { TargetPointsInputComponent } from './target-points-input.component';
 import { PokemonInfoComponent } from './pokemon-info.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
 import { TaskTableComponent } from './task-table.component';
+import { PokemonTasksLeftSidebarComponent } from './pokemon-tasks-left-sidebar.component';
+import { PokemonTasksRightSidebarComponent } from './pokemon-tasks-right-sidebar.component';
+import { CommonModule } from '@angular/common'; // For @for in right sidebar, though it should be standalone
 
 @Component({
   selector: 'app-pokemon-la-tasks-simulator',
   imports: [
     FormsModule,
     PrimaryContainerComponent,
-    PokemonListComponent,
+    // PokemonListComponent, // Removed as it's now in LeftSidebar
     HeaderComponent,
     SegmentSelectComponent,
     TargetPointsInputComponent,
@@ -23,17 +26,18 @@ import { TaskTableComponent } from './task-table.component';
     ButtonComponent,
     TaskTableComponent,
     TargetPointsInputComponent,
+    PokemonTasksLeftSidebarComponent,
+    PokemonTasksRightSidebarComponent,
+    CommonModule, // Added for safety, though sidebars are standalone
   ],
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
       <app-header class="fixed top-0" />
       <div class="flex">
-        <aside class="flex h-[calc(100vh-56px)] w-80 flex-col">
-          <app-pokemon-list
-            [pokedex]="service.pokedex()"
-            (clickPokemon)="service.currentPokemonId.set($event.id)"
-          />
-        </aside>
+        <app-pokemon-tasks-left-sidebar
+          [pokedex]="service.pokedex()"
+          (pokemonClicked)="service.currentPokemonId.set($event.id)"
+        />
         <main class="mx-2 flex flex-1 flex-col">
           <section class="mx-2 mb-4 flex items-center gap-4">
             <app-primary-container
@@ -81,41 +85,10 @@ import { TaskTableComponent } from './task-table.component';
             </app-primary-container>
           </section>
         </main>
-        <aside class="flex h-[calc(100vh-56px)] w-60 flex-col">
-          <div class="mt-12 overflow-y-scroll">
-            <ul class="w-60 p-1">
-              @for (segment of timelineSegments(); track segment.id) {
-                <li class="pb-2">
-                  <div class="flex items-center gap-2 font-bold">
-                    <div class="bg-surface-container text-on-surface-container w-32 rounded-md p-1 text-center">
-                      {{ segment.name }}
-                    </div>
-                    <div>
-                      {{ service.pointsBySegment()[segment.id].total }}
-                      (+{{ service.pointsBySegment()[segment.id].increased }})
-                    </div>
-                  </div>
-                </li>
-              }
-              <li>
-                <div class="flex gap-4">
-                  <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#75FB4C"
-                    >
-                      <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
-                    </svg>
-                  </div>
-                  <div class="font-bold">{{ service.points() }}</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </aside>
+        <app-pokemon-tasks-right-sidebar
+          [timelineSegments]="timelineSegmentsWithPoints()"
+          [totalPoints]="service.points()"
+        />
       </div>
     </div>
   `,
@@ -125,13 +98,30 @@ export class PokemonLATasksSimulatorComponent {
 
   service = createSignalizedPokedex();
 
-  timelineSegments = computed(() =>
-    this.service.segments()
-      .filter((segment) => Object.hasOwn(this.service.pointsBySegment(), segment.id))
-  );
+  // timelineSegments = computed(() =>
+  //   this.service.segments()
+  //     .filter((segment) => Object.hasOwn(this.service.pointsBySegment(), segment.id))
+  // );
+
+  // Transform data for the right sidebar
+  timelineSegmentsWithPoints = computed(() => {
+    const pointsBySegment = this.service.pointsBySegment();
+    return this.service.segments()
+      .filter(segment => Object.hasOwn(pointsBySegment, segment.id))
+      .map(segment => ({
+        id: segment.id,
+        name: segment.name,
+        points: pointsBySegment[segment.id]
+      }));
+  });
 
   updateProgress(taskNo: number, progress: number) {
     this.service.doCurrentPokemonTask(taskNo, progress);
+  }
+
+  // Helper to handle pokemon click, though direct binding in template is also fine
+  onPokemonClickedInSimulator(pokemon: { id: number }) {
+    this.service.currentPokemonId.set(pokemon.id);
   }
 }
 

@@ -104,16 +104,15 @@
     --color-on-error-container: #ffffff;
 
     /* Surface */
-    --color-surface: #f7f1ed;
+    --color-surface: #ffffff;
     --color-surface-dim: oklch(from var(--color-surface) calc(l * 80%) c h);
     --color-surface-bright: oklch(from var(--color-surface) calc(l * 120%) c h);
-    --color-surface-container: #27394e;
+    --color-surface-container: #f7f1ed;
     --color-surface-container-low: oklch(from var(--color-surface-container) calc(l * 120%) c h);
     --color-surface-container-lowest: oklch(from var(--color-surface-container-low) calc(l * 120%) c h);
     --color-surface-container-high: oklch(from var(--color-surface-container) calc(l * 80%) c h);
     --color-surface-container-highest: oklch(from var(--color-surface-container-high) calc(l * 80%) c h);
     --color-on-surface: #283a4f;
-    --color-on-surface-container: #f5f0da;
     --color-on-surface-variant: #345B89;
 
     /* Outline */

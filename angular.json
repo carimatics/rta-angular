@@ -68,7 +68,7 @@
               "buildTarget": "rta:build:production"
             },
             "development": {
-              "buildTarget": "rta:build:development"
+              "buildTarget": "rta:build:production"
             }
           },
           "defaultConfiguration": "development"

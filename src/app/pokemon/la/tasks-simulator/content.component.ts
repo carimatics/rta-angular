@@ -28,7 +28,7 @@ import { TaskTableComponent } from './task-table.component';
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
       <app-header class="fixed top-0" />
       <div class="flex">
-        <aside class="flex h-[calc(100vh-60px)] w-80 flex-col">
+        <aside class="flex h-[calc(100vh-56px)] w-80 flex-col">
           <app-pokemon-list
             [pokedex]="service.pokedex()"
             (clickPokemon)="service.currentPokemonId.set($event.id)"
@@ -81,7 +81,7 @@ import { TaskTableComponent } from './task-table.component';
             </app-primary-container>
           </section>
         </main>
-        <aside class="bg-surface flex h-[calc(100vh-60px)] w-60 flex-col text-black">
+        <aside class="flex h-[calc(100vh-56px)] w-60 flex-col">
           <div class="mt-12 overflow-y-scroll">
             <ul class="w-60 p-1">
               @for (segment of timelineSegments(); track segment.id) {

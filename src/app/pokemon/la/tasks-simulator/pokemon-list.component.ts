@@ -58,7 +58,7 @@ export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();
 
   classListWidth = input<string>('w-80');
-  classListHeight = input<string>('h-[calc(100vh-108px)]');
+  classListHeight = input<string>('h-[calc(100vh-112px)]');
   classListContainer = computed(() => twMerge('my-1 overflow-y-scroll', this.classListHeight()));
   classList = computed(() => twMerge('p-1', this.classListWidth()))
 

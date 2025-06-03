@@ -6,8 +6,7 @@ export abstract class BaseComponent {
   abstract defaultClasses: Signal<string>;
 
   hostClass(): string {
-    const customClasses = this.class();
-    return this.mergeClasses(this.defaultClasses(), customClasses);
+    return this.mergeClasses(this.defaultClasses(), this.class());
   }
 
   private mergeClasses(defaultClasses: string, customClasses: string | undefined): string {

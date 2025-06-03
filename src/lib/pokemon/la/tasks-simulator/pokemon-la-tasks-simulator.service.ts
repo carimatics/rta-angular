@@ -13,7 +13,7 @@ type PokedexPokemonTask = {
   requirements: number[];
 };
 
-class SignalizedTask {
+export class SignalizedTask {
   id: Task;
   option: number | undefined;
   reward: number;
@@ -94,7 +94,7 @@ class SignalizedTask {
   }
 }
 
-class SignalizedPokemon {
+export class SignalizedPokemon {
   id: Pokemon;
   isArceus: boolean;
   name: Signal<string> = computed(() => this.dictionary().pokemon(this.id));

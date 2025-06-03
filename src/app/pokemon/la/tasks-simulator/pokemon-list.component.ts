@@ -4,8 +4,8 @@ import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/po
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
 import {
-  PokemonLATasksSimulatorPokemonListCardComponent
-} from './pokemon-la-tasks-simulator-pokemon-list-card.component';
+  PokemonListCardComponent
+} from './pokemon-list-card.component';
 import { SearchInputComponent } from '../../../../lib/components/search-input.component';
 import { hiraganaToKatakana } from '../../../../lib/utils/change-case';
 import { twMerge } from 'tailwind-merge';
@@ -15,7 +15,7 @@ import { twMerge } from 'tailwind-merge';
   imports: [
     FormsModule,
     ButtonComponent,
-    PokemonLATasksSimulatorPokemonListCardComponent,
+    PokemonListCardComponent,
     SearchInputComponent,
   ],
   host: {
@@ -54,7 +54,7 @@ import { twMerge } from 'tailwind-merge';
     </div>
   `,
 })
-export class PokemonLATasksSimulatorPokemonListComponent extends BaseComponent {
+export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();
 
   classListWidth = input<string>('w-80');

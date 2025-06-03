@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PokemonLAPage } from './pokemon-la-page.component';
+import { PokemonLAPage } from './page.component';
 import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Page', () => {

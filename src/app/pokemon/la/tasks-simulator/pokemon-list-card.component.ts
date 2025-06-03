@@ -2,13 +2,13 @@ import { Component, computed, input, InputSignal, model, output, Signal } from '
 import { FormsModule } from '@angular/forms';
 import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { PokemonLATasksSimulatorPokemonImgComponent } from './pokemon-la-tasks-simulator-pokemon-img.component';
+import { PokemonImgComponent } from './pokemon-img.component';
 
 @Component({
   selector: 'li[pokemonListCard]',
   imports: [
     FormsModule,
-    PokemonLATasksSimulatorPokemonImgComponent,
+    PokemonImgComponent,
   ],
   host: {
     '[class]': 'hostClass()',
@@ -27,7 +27,7 @@ import { PokemonLATasksSimulatorPokemonImgComponent } from './pokemon-la-tasks-s
     </ng-content>
   `,
 })
-export class PokemonLATasksSimulatorPokemonListCardComponent extends BaseComponent {
+export class PokemonListCardComponent extends BaseComponent {
   pokemon = input.required<SignalizedPokemon>()
   click = output<void>();
 

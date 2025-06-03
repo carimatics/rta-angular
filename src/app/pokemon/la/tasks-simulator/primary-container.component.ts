@@ -14,7 +14,7 @@ import { BaseComponent } from '../../../../lib/components/base.component';
     <ng-content></ng-content>
   `,
 })
-export class PokemonLATasksSimulatorPrimaryContainerComponent extends BaseComponent {
+export class PrimaryContainerComponent extends BaseComponent {
   override class: InputSignal<string | undefined> = input<string>();
   override defaultClasses: Signal<string> = computed<string>(() => 'bg-surface rounded-xl p-4 shadow-lg text-on-surface');
 }

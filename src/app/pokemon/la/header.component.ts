@@ -11,9 +11,7 @@ import { BaseComponent } from '../../../lib/components/base.component';
     </header>
   `,
 })
-export class PokemonLAHeaderComponent extends BaseComponent {
+export class HeaderComponent extends BaseComponent {
   override class = input<string>();
   override defaultClasses = computed(() => 'z-50 flex h-14 w-full items-center');
 }
-
-export default PokemonLAHeaderComponent;

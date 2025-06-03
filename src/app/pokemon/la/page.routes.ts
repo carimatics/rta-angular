@@ -3,15 +3,15 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pokemon-la-page.component'),
+    loadComponent: () => import('./page.component'),
     children: [
       {
         path: '',
-        loadComponent: () => import('./pokemon-la.component'),
+        loadComponent: () => import('./content.component'),
       },
       {
         path: 'tasks-simulator',
-        loadChildren: () => import('./tasks-simulator/pokemon-la-tasks-simulator.routes'),
+        loadChildren: () => import('./tasks-simulator/page.routes'),
       },
     ]
   },

@@ -3,19 +3,19 @@ import { FormsModule } from '@angular/forms';
 import { createSignalizedPokedex } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { NgOptimizedImage } from '@angular/common';
 import {
-  PokemonLATasksSimulatorPrimaryContainerComponent
-} from './pokemon-la-tasks-simulator-primary-container.component';
-import { PokemonLATasksSimulatorPokemonListComponent } from './pokemon-la-tasks-simulator-pokemon-list.component';
-import PokemonLAHeaderComponent from '../pokemon-la-header.component';
+  PrimaryContainerComponent
+} from './primary-container.component';
+import { PokemonListComponent } from './pokemon-list.component';
+import { HeaderComponent } from '../header.component';
 
 @Component({
   selector: 'app-pokemon-la-tasks-simulator',
   imports: [
     FormsModule,
     NgOptimizedImage,
-    PokemonLATasksSimulatorPrimaryContainerComponent,
-    PokemonLATasksSimulatorPokemonListComponent,
-    PokemonLAHeaderComponent,
+    PrimaryContainerComponent,
+    PokemonListComponent,
+    HeaderComponent,
   ],
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">

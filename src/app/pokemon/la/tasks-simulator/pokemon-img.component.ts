@@ -17,7 +17,7 @@ import { BaseComponent } from '../../../../lib/components/base.component';
   },
   template: ``,
 })
-export class PokemonLATasksSimulatorPokemonImgComponent extends BaseComponent {
+export class PokemonImgComponent extends BaseComponent {
   pokemon = input.required<SignalizedPokemon>()
   size = input<number>(80);
 

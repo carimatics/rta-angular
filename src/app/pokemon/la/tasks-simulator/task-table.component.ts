@@ -3,12 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { ProgressInputComponent } from './progress-input.component';
+import { RequirementsIndicatorComponent } from './requirements-indicator.component';
 
 @Component({
   selector: 'app-task-table',
   imports: [
     FormsModule,
     ProgressInputComponent,
+    RequirementsIndicatorComponent,
   ],
   host: {
     '[class]': 'hostClass()',
@@ -46,34 +48,10 @@ import { ProgressInputComponent } from './progress-input.component';
               }
             </td>
             <td class="pb-2">
-              <div class="flex flex-col">
-                <ul class="flex items-center justify-center">
-                  @for (requirement of task.requirements; track $index) {
-                    <li class="flex items-center justify-center font-bold">
-                      @if (requirement === task.requirements[0]) {
-                        <div
-                          class="flex items-center justify-center
-                                  bg-secondary hover:bg-secondary-fixed
-                                  text-on-secondary size-7 cursor-pointer rounded-full text-center"
-                          (click)="updateProgress.emit({ taskNo, progress: requirement })"
-                        >
-                          {{ requirement }}
-                        </div>
-                      } @else {
-                        <div
-                          class="bg-secondary hover:bg-secondary-fixed h-1 w-2 cursor-pointer"
-                        ></div>
-                        <div
-                          class="flex items-center justify-center bg-secondary hover:bg-secondary-fixed text-on-secondary size-7 cursor-pointer rounded-full text-center"
-                          (click)="updateProgress.emit({ taskNo, progress: requirement })"
-                        >
-                          {{ requirement }}
-                        </div>
-                      }
-                    </li>
-                  }
-                </ul>
-              </div>
+              <app-requirements-indicator
+                [task]="task"
+                (updateProgress)="updateProgress.emit({ taskNo, progress: $event })"
+              />
             </td>
             <td class="w-16 pb-2 text-center font-bold">
               {{ task.points() }}

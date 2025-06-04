@@ -42,10 +42,12 @@ export class PokemonListComponent extends BaseComponent {
   classList = computed(() => twMerge('p-1', this.classListWidth()));
 
   searchInputWord = model('');
-  searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()));
-
   clickPokemon = output<SignalizedPokemon>();
 
+  override class: InputSignal<string | undefined> = input<string>();
+  override defaultClasses: Signal<string> = computed<string>(() => '');
+
+  private searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()));
   filteredPokemons = computed(() => {
     const searchWord = this.searchWord();
     if (searchWord === '') {
@@ -54,9 +56,6 @@ export class PokemonListComponent extends BaseComponent {
 
     return this.pokedex().filter((pokemon) => pokemon.name().includes(searchWord) || pokemon.id.toString().includes(searchWord));
   });
-
-  override class: InputSignal<string | undefined> = input<string>();
-  override defaultClasses: Signal<string> = computed<string>(() => '');
 
   onClickClear() {
     this.searchInputWord.set('');

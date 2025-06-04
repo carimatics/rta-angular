@@ -1,17 +1,18 @@
-import { Language, Move, MoveType, pokedex, Pokemon, Segment, Task } from '../fixtures';
-import { closedRangePokemons, closedRangeSegments, rangeSegments } from '../utils/la-range';
+import { Signal, WritableSignal, computed, signal } from '@angular/core';
+
 import { clamp } from '../../../utils/range';
-import { computed, signal, Signal, WritableSignal } from '@angular/core';
 import { Dictionary, getDictionary } from '../dictionaries';
+import { Language, Move, MoveType, Pokemon, Segment, Task, pokedex } from '../fixtures';
+import { closedRangePokemons, closedRangeSegments, rangeSegments } from '../utils/la-range';
 
 type PointsBySegment = Record<Segment, { increased: number; total: number }>;
 
-type PokedexPokemonTask = {
+interface PokedexPokemonTask {
   id: Task;
   option?: Move | MoveType;
   reward: number;
   requirements: number[];
-};
+}
 
 export class SignalizedTask {
   id: Task;
@@ -29,11 +30,7 @@ export class SignalizedTask {
     const progresses = this.progresses();
     return Object.keys(progresses)
       .map((key) => parseInt(key) as Segment)
-      .reduce(
-        (max, segment) =>
-          progresses[segment] > max ? progresses[segment] : max,
-        0,
-      );
+      .reduce((max, segment) => (progresses[segment] > max ? progresses[segment] : max), 0);
   });
   achievedCount: Signal<number> = computed(() => {
     const progress = this.progress();
@@ -60,15 +57,11 @@ export class SignalizedTask {
   }
 
   pointsUntilSegment(segment: Segment) {
-    const progress = closedRangeSegments(Segment.Village1, segment).reduce(
-      (max, seg) => {
-        const progress = this.progresses()[seg] ?? 0;
-        return progress > max ? progress : max;
-      },
-      0,
-    );
-    const achievedCount =
-      this.requirements.findLastIndex((req) => req <= progress) + 1;
+    const progress = closedRangeSegments(Segment.Village1, segment).reduce((max, seg) => {
+      const progress = this.progresses()[seg] ?? 0;
+      return progress > max ? progress : max;
+    }, 0);
+    const achievedCount = this.requirements.findLastIndex((req) => req <= progress) + 1;
     return this.reward * achievedCount;
   }
 
@@ -90,7 +83,7 @@ export class SignalizedTask {
         delete progresses[seg];
       }
     }
-    this.progresses.set(progresses)
+    this.progresses.set(progresses);
   }
 }
 
@@ -106,9 +99,7 @@ export class SignalizedPokemon {
 
   caught: Signal<boolean> = computed(() => this.catchTask.progress() > 0);
   points: Signal<number> = computed(() => {
-    return this.caught()
-      ? this.tasks.reduce((acc, task) => acc + task.points(), 0)
-      : 0;
+    return this.caught() ? this.tasks.reduce((acc, task) => acc + task.points(), 0) : 0;
   });
   segmentCompleted: Signal<Segment | undefined> = computed(() =>
     closedRangeSegments().find((segment) => {
@@ -117,7 +108,7 @@ export class SignalizedPokemon {
       }
       const points = this.pointsNormalTasksUntilSegment(segment);
       return points >= 100;
-    })
+    }),
   );
   completed: Signal<boolean> = computed(() => {
     return this.segmentCompleted() !== undefined;
@@ -129,11 +120,11 @@ export class SignalizedPokemon {
     const points = {
       ...(initial > 0
         ? {
-          [previous]: {
-            increased: initial,
-            total: initial,
-          },
-        }
+            [previous]: {
+              increased: initial,
+              total: initial,
+            },
+          }
         : {}),
     } as PointsBySegment;
 
@@ -157,13 +148,7 @@ export class SignalizedPokemon {
   ) {
     this.id = pokemon;
     this.isArceus = this.id === Pokemon.Arceus;
-    this.tasks = pokedex[this.id].tasks
-      .map((task) =>
-        new SignalizedTask(
-          this.dictionary,
-          task,
-        )
-      );
+    this.tasks = pokedex[this.id].tasks.map((task) => new SignalizedTask(this.dictionary, task));
     this.catchTask = this.tasks[0];
     this.normalTasks = this.tasks.slice(0, this.tasks.length - 1);
     this.completeTask = this.tasks[this.tasks.length - 1];
@@ -200,10 +185,7 @@ export class SignalizedPokemon {
   }
 
   private pointsUntilSegment(segment: Segment): number {
-    return (
-      this.pointsNormalTasksUntilSegment(segment) +
-      this.pointsCompleteTaskUntilSegment(segment)
-    );
+    return this.pointsNormalTasksUntilSegment(segment) + this.pointsCompleteTaskUntilSegment(segment);
   }
 
   private pointsNormalTasksUntilSegment(segment: Segment): number {
@@ -235,15 +217,13 @@ class PokemonLaTasksSimulatorService {
   readonly pokedex: WritableSignal<SignalizedPokemon[]>;
 
   readonly currentPokemonId: WritableSignal<Pokemon> = signal(Pokemon.Rowlet);
-  readonly currentPokemon: Signal<SignalizedPokemon> = computed(
-    () => this.pokedex().find((pokemon) => pokemon.id === this.currentPokemonId())!
-  );
+  readonly currentPokemon: Signal<SignalizedPokemon> = computed(() => this.pokedex().find((pokemon) => pokemon.id === this.currentPokemonId())!);
 
-  readonly segments: Signal<{ id: Segment, name: string }[]> = computed(
-    () => closedRangeSegments()
-      .map((id) => ({
-        id, name: this.dictionary().segment(id)
-      }))
+  readonly segments: Signal<{ id: Segment; name: string }[]> = computed(() =>
+    closedRangeSegments().map((id) => ({
+      id,
+      name: this.dictionary().segment(id),
+    })),
   );
   readonly currentSegment: WritableSignal<Segment> = signal(Segment.Village1);
 
@@ -263,16 +243,13 @@ class PokemonLaTasksSimulatorService {
     return points;
   });
   readonly points: Signal<number> = computed(() => {
-    return this.segments()
-      .reduce((acc, segment) => {
-        const increased = this.pointsBySegment()[segment.id]?.increased ?? 0;
-        return acc + increased;
-      }, 0);
+    return this.segments().reduce((acc, segment) => {
+      const increased = this.pointsBySegment()[segment.id]?.increased ?? 0;
+      return acc + increased;
+    }, 0);
   });
 
-  constructor(
-    readonly language: WritableSignal<Language> = signal(Language.Ja),
-  ) {
+  constructor(readonly language: WritableSignal<Language> = signal(Language.Ja)) {
     this.pokedex = signal(this.generateNewPokedex());
   }
 
@@ -296,8 +273,7 @@ class PokemonLaTasksSimulatorService {
   }
 
   private generateNewPokedex(): SignalizedPokemon[] {
-    return closedRangePokemons()
-      .map((id) => new SignalizedPokemon(this.dictionary, id))
+    return closedRangePokemons().map((id) => new SignalizedPokemon(this.dictionary, id));
   }
 }
 

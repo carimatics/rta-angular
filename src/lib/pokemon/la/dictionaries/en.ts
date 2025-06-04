@@ -1,6 +1,6 @@
-import { Dictionary } from './base';
 import { Move, MoveType, Place, Pokemon, Segment, Task } from '../fixtures';
-import { moves, moveTypes, places, pokemons, segments, tasks } from '../fixtures/locales/en';
+import { moveTypes, moves, places, pokemons, segments, tasks } from '../fixtures/locales/en';
+import { Dictionary } from './base';
 
 export class EnDictionary implements Dictionary {
   move(id: Move): string {

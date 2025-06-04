@@ -1,7 +1,7 @@
 import { Language } from '../fixtures';
-import { JaDictionary } from './ja';
-import { EnDictionary } from './en';
 import { Dictionary } from './base';
+import { EnDictionary } from './en';
+import { JaDictionary } from './ja';
 
 function getDictionary(language: Language): Dictionary {
   switch (language) {
@@ -14,7 +14,4 @@ function getDictionary(language: Language): Dictionary {
   }
 }
 
-export {
-  getDictionary,
-  type Dictionary,
-};
+export { getDictionary, type Dictionary };

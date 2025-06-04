@@ -34,4 +34,4 @@ export const Segment = {
   Village13: 33,
   Highlands3: 34,
 } as const;
-export type Segment = typeof Segment[keyof typeof Segment];
+export type Segment = (typeof Segment)[keyof typeof Segment];

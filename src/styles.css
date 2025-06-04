@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Material 3 Color Scheme */
@@ -65,7 +65,7 @@
 }
 
 @layer theme {
-  [data-theme="pokemon-la"] {
+  [data-theme='pokemon-la'] {
     /* Material 3 Color Scheme */
     /* Primary */
     --color-primary: #b19d8d;
@@ -113,7 +113,7 @@
     --color-surface-container-high: oklch(from var(--color-surface-container) calc(l * 80%) c h);
     --color-surface-container-highest: oklch(from var(--color-surface-container-high) calc(l * 80%) c h);
     --color-on-surface: #283a4f;
-    --color-on-surface-variant: #345B89;
+    --color-on-surface-variant: #345b89;
 
     /* Outline */
     --color-outline: #332d2d;

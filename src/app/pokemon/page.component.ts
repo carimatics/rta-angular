@@ -3,13 +3,9 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-page',
-  imports: [
-    RouterOutlet
-  ],
+  imports: [RouterOutlet],
   template: `<router-outlet />`,
 })
-export class PokemonPage {
+export class PokemonPageComponent {}
 
-}
-
-export default PokemonPage;
+export default PokemonPageComponent;

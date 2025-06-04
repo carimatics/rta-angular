@@ -1,13 +1,11 @@
-import { Component, computed, input, InputSignal, output, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 
 @Component({
   selector: 'app-requirements-indicator',
-  imports: [
-    FormsModule,
-  ],
+  imports: [],
   host: {
     '[class]': 'hostClass()',
   },
@@ -16,27 +14,24 @@ import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokem
       @for (requirement of task().requirements; track $index) {
         <li class="flex items-center justify-center font-bold">
           @if (requirement === task().first) {
-            <div
+            <button
               class="flex items-center justify-center size-7
                 bg-secondary text-on-secondary cursor-pointer rounded-full
                 {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
-              (click)="updateProgress.emit(requirement)"
-            >
+              (click)="updateProgress.emit(requirement)">
               {{ requirement }}
-            </div>
+            </button>
           } @else {
             <div
               class="bg-secondary h-1 w-2
-                {{ progress() >= requirement ? '' : 'brightness-75' }}"
-            ></div>
-            <div
+                {{ progress() >= requirement ? '' : 'brightness-75' }}"></div>
+            <button
               class="flex items-center justify-center size-7
                 bg-secondary text-on-secondary cursor-pointer rounded-full
                 {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
-              (click)="updateProgress.emit(requirement)"
-            >
+              (click)="updateProgress.emit(requirement)">
               {{ requirement }}
-            </div>
+            </button>
           }
         </li>
       }

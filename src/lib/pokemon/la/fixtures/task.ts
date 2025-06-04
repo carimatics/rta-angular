@@ -44,4 +44,4 @@ export const Task = {
   Swinub: 43,
   Arceus: 44,
 } as const;
-export type Task = typeof Task[keyof typeof Task];
+export type Task = (typeof Task)[keyof typeof Task];

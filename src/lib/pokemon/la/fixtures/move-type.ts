@@ -17,4 +17,4 @@ export const MoveType = {
   Steel: 16,
   Fairy: 17,
 } as const;
-export type MoveType = typeof MoveType[keyof typeof MoveType];
+export type MoveType = (typeof MoveType)[keyof typeof MoveType];

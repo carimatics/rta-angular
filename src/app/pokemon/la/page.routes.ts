@@ -13,7 +13,7 @@ export const routes: Routes = [
         path: 'tasks-simulator',
         loadChildren: () => import('./tasks-simulator/page.routes'),
       },
-    ]
+    ],
   },
 ];
 

@@ -9,4 +9,4 @@ export const Place = {
   Highlands: 8,
   Icelands: 9,
 } as const;
-export type Place = typeof Place[keyof typeof Place];
+export type Place = (typeof Place)[keyof typeof Place];

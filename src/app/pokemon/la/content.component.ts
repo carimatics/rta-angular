@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   template: ``,
 })
-export class PokemonLAComponent {
-
-}
+export class PokemonLAComponent {}
 
 export default PokemonLAComponent;

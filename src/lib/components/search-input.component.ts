@@ -1,5 +1,6 @@
 import { Component, computed, input } from '@angular/core';
-import { tv, VariantProps } from 'tailwind-variants';
+import { VariantProps, tv } from 'tailwind-variants';
+
 import { BaseComponent } from './base.component';
 
 const searchInput = tv({
@@ -34,11 +35,10 @@ const searchInput = tv({
 type SearchInputVariant = VariantProps<typeof searchInput>;
 
 @Component({
-  selector: 'input[type="search"][libSearchInput]',
+  selector: 'input[type="search"][lib-search-input]',
   imports: [],
   host: { '[class]': 'hostClass()' },
-  template: `
-    <ng-content />`
+  template: `<ng-content />`,
 })
 export class SearchInputComponent extends BaseComponent {
   color = input<SearchInputVariant['color']>();
@@ -46,9 +46,11 @@ export class SearchInputComponent extends BaseComponent {
   font = input<SearchInputVariant['font']>();
 
   override class = input<string>();
-  override defaultClasses = computed<string>(() => searchInput({
-    color: this.color(),
-    size: this.size(),
-    font: this.font()
-  }));
+  override defaultClasses = computed<string>(() =>
+    searchInput({
+      color: this.color(),
+      size: this.size(),
+      font: this.font(),
+    }),
+  );
 }

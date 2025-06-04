@@ -1,24 +1,17 @@
-import { Component, computed, input, InputSignal, output, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { Component, InputSignal, Signal, computed, input } from '@angular/core';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { PokemonImgComponent } from './pokemon-img.component';
 
 @Component({
   selector: 'app-pokemon-info',
-  imports: [
-    FormsModule,
-    PokemonImgComponent,
-  ],
+  imports: [PokemonImgComponent],
   host: {
     '[class]': 'hostClass()',
   },
   template: `
-    <img
-      pokemonImg
-      [pokemon]="pokemon()"
-      [alt]="pokemon().name()"
-    />
+    <img app-pokemon-img [pokemon]="pokemon()" [alt]="pokemon().name()" />
     <div class="flex flex-col font-bold">
       <div>No. {{ pokemon().id }}</div>
       <div>{{ pokemon().name() }}</div>
@@ -27,8 +20,7 @@ import { PokemonImgComponent } from './pokemon-img.component';
   `,
 })
 export class PokemonInfoComponent extends BaseComponent {
-  pokemon = input.required<SignalizedPokemon>()
-  click = output<void>();
+  pokemon = input.required<SignalizedPokemon>();
 
   override class: InputSignal<string | undefined> = input<string>();
   override defaultClasses: Signal<string> = computed<string>(() => 'flex flex-1 gap-2');

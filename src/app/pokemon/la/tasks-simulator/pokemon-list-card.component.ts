@@ -5,7 +5,7 @@ import { BaseComponent } from '../../../../lib/components/base.component';
 import { PokemonImgComponent } from './pokemon-img.component';
 
 @Component({
-  selector: 'li[app-pokemon-list-card]',
+  selector: 'app-pokemon-list-card',
   imports: [
     FormsModule,
     PokemonImgComponent,
@@ -14,17 +14,15 @@ import { PokemonImgComponent } from './pokemon-img.component';
     '[class]': 'hostClass()',
   },
   template: `
-    <ng-content>
-      <div
-        class="bg-primary hover:brightness-125 border border-outline flex gap-2 overflow-clip rounded-xl transition-all sase-out">
-        <img app-pokemon-img [pokemon]="pokemon()" [alt]="pokemon().name()" />
-        <div class="flex w-full flex-col pr-4 text-on-primary">
-          <div class="mt-1 font-bold">No. {{ pokemon().id }}</div>
-          <div class="font-bold">{{ pokemon().name() }}</div>
-          <div class="text-end">{{ pokemon().points() }}</div>
-        </div>
+    <div
+      class="bg-primary hover:brightness-125 border border-outline flex gap-2 overflow-clip rounded-xl transition-all sase-out">
+      <img app-pokemon-img [pokemon]="pokemon()" [alt]="pokemon().name()" />
+      <div class="flex w-full flex-col pr-4 text-on-primary">
+        <div class="mt-1 font-bold">No. {{ pokemon().id }}</div>
+        <div class="font-bold">{{ pokemon().name() }}</div>
+        <div class="text-end">{{ pokemon().points() }}</div>
       </div>
-    </ng-content>
+    </div>
   `,
 })
 export class PokemonListCardComponent extends BaseComponent {

@@ -16,27 +16,27 @@ import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokem
       @for (requirement of task().requirements; track $index) {
         <li class="flex items-center justify-center font-bold">
           @if (requirement === task().first) {
-            <div
+            <button
               class="flex items-center justify-center size-7
                 bg-secondary text-on-secondary cursor-pointer rounded-full
                 {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
               (click)="updateProgress.emit(requirement)"
             >
               {{ requirement }}
-            </div>
+            </button>
           } @else {
             <div
               class="bg-secondary h-1 w-2
                 {{ progress() >= requirement ? '' : 'brightness-75' }}"
             ></div>
-            <div
+            <button
               class="flex items-center justify-center size-7
                 bg-secondary text-on-secondary cursor-pointer rounded-full
                 {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
               (click)="updateProgress.emit(requirement)"
             >
               {{ requirement }}
-            </div>
+            </button>
           }
         </li>
       }

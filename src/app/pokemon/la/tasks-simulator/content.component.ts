@@ -55,7 +55,7 @@ import { TaskTableComponent } from './task-table.component';
               <div class="m-2 flex w-full">
                 <app-pokemon-info [pokemon]="service.currentPokemon()" />
                 <button
-                  libButton
+                  lib-button
                   color="error"
                   class="mr-8 size-10 flex items-center justify-center"
                   (click)="service.currentPokemon().resetTasks()"

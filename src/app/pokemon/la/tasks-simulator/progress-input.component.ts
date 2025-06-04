@@ -15,7 +15,7 @@ import { ButtonComponent } from '../../../../lib/components/button.component';
   },
   template: `
     <button
-      libButton
+      lib-button
       color="error"
       size="sm"
       class="flex size-6 items-center justify-center p-0"
@@ -46,7 +46,7 @@ import { ButtonComponent } from '../../../../lib/components/button.component';
         class="h-full border-l-outline-variant flex items-center justify-center gap-1 rounded-r-lg border-l-2 px-1">
         <button
           type="button"
-          libButton
+          lib-button
           color="secondary"
           class="flex items-center justify-center size-6"
           (click)="updateProgress.emit(task().progress() - 1)"
@@ -55,7 +55,7 @@ import { ButtonComponent } from '../../../../lib/components/button.component';
         </button>
         <button
           type="button"
-          libButton
+          lib-button
           color="secondary"
           class="flex items-center justify-center size-6"
           (click)="updateProgress.emit(task().progress() + 1)"

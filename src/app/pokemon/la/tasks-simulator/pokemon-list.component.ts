@@ -25,13 +25,13 @@ import { twMerge } from 'tailwind-merge';
     <div class="mx-4 my-2">
       <div class="flex">
         <input
-          libSearchInput
+          lib-search-input
           type="search"
           placeholder="Search"
           [(ngModel)]="searchInputWord"
         />
         <button
-          libButton
+          lib-button
           color="error"
           class="ml-2"
           (click)="onClickClear()"
@@ -44,7 +44,7 @@ import { twMerge } from 'tailwind-merge';
       <ul class="{{classList()}}">
         @for (pokemon of filteredPokemons(); track pokemon.id) {
           <li
-            appPokemonListCard
+            app-pokemon-list-card
             class="mx-4 my-2"
             [pokemon]="pokemon"
             (click)="clickPokemon.emit(pokemon)"

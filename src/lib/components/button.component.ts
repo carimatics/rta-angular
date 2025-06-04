@@ -33,7 +33,7 @@ const button = tv({
 type ButtonVariants = VariantProps<typeof button>;
 
 @Component({
-  selector: 'button[libButton]',
+  selector: 'button[lib-button]',
   imports: [],
   host: { '[class]': 'hostClass()' },
   template: `

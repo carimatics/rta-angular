@@ -34,7 +34,7 @@ const searchInput = tv({
 type SearchInputVariant = VariantProps<typeof searchInput>;
 
 @Component({
-  selector: 'input[type="search"][libSearchInput]',
+  selector: 'input[type="search"][lib-search-input]',
   imports: [],
   host: { '[class]': 'hostClass()' },
   template: `

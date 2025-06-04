@@ -15,7 +15,7 @@ import { PokemonImgComponent } from './pokemon-img.component';
   },
   template: `
     <img
-      appPokemonImg
+      app-pokemon-img
       [pokemon]="pokemon()"
       [alt]="pokemon().name()"
     />

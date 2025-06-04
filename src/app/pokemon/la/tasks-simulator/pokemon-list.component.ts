@@ -1,4 +1,4 @@
-import { Component, InputSignal, Signal, computed, input, model, output } from '@angular/core';
+import { Component, InputSignal, Signal, computed, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { twMerge } from 'tailwind-merge';
 
@@ -41,7 +41,7 @@ export class PokemonListComponent extends BaseComponent {
   classListContainer = computed(() => twMerge('my-1 overflow-y-scroll', this.classListHeight()));
   classList = computed(() => twMerge('p-1', this.classListWidth()));
 
-  searchInputWord = model('');
+  searchInputWord = signal('');
   clickPokemon = output<SignalizedPokemon>();
 
   override class: InputSignal<string | undefined> = input<string>();

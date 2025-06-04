@@ -1,4 +1,4 @@
-import { Component, computed, model } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../../lib/components/button.component';
@@ -96,7 +96,7 @@ import { TaskTableComponent } from './task-table.component';
   `,
 })
 export class PokemonLATasksSimulatorComponent {
-  targetPoints = model(8500);
+  targetPoints = signal(8500);
 
   service = createSignalizedPokedex();
 

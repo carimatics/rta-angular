@@ -3,16 +3,16 @@ import { Task } from './task';
 import { Move } from './move';
 import { MoveType } from './move-type';
 
-export const pokedex: {
-  [key in Pokemon]: {
-    tasks: ({
-      id: Task;
-      option?: Move | MoveType;
-      reward: number;
-      requirements: number[];
-    })[];
-  }
-} = {
+type Pokedex = Record<Pokemon, {
+  tasks: ({
+    id: Task;
+    option?: Move | MoveType;
+    reward: number;
+    requirements: number[];
+  })[];
+}>;
+
+export const pokedex: Pokedex = {
   [Pokemon.Rowlet]: {
     tasks: [
       {

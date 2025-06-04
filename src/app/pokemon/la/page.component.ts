@@ -17,8 +17,8 @@ import { HeaderComponent } from './header.component';
     </div>
   `,
 })
-export class PokemonLAPage {
+export class PokemonLAPageComponent {
 
 }
 
-export default PokemonLAPage;
+export default PokemonLAPageComponent;

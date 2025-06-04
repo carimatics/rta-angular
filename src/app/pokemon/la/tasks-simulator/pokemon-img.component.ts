@@ -4,7 +4,7 @@ import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/po
 import { BaseComponent } from '../../../../lib/components/base.component';
 
 @Component({
-  selector: 'img[pokemonImg]',
+  selector: 'img[appPokemonImg]',
   imports: [
     FormsModule,
   ],

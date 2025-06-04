@@ -44,7 +44,7 @@ import { twMerge } from 'tailwind-merge';
       <ul class="{{classList()}}">
         @for (pokemon of filteredPokemons(); track pokemon.id) {
           <li
-            pokemonListCard
+            appPokemonListCard
             class="mx-4 my-2"
             [pokemon]="pokemon"
             (click)="clickPokemon.emit(pokemon)"

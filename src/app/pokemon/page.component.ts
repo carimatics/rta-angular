@@ -8,8 +8,8 @@ import { RouterOutlet } from '@angular/router';
   ],
   template: `<router-outlet />`,
 })
-export class PokemonPage {
+export class PokemonPageComponent {
 
 }
 
-export default PokemonPage;
+export default PokemonPageComponent;

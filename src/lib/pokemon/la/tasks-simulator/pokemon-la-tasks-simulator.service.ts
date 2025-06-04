@@ -6,12 +6,12 @@ import { Dictionary, getDictionary } from '../dictionaries';
 
 type PointsBySegment = Record<Segment, { increased: number; total: number }>;
 
-type PokedexPokemonTask = {
+interface PokedexPokemonTask {
   id: Task;
   option?: Move | MoveType;
   reward: number;
   requirements: number[];
-};
+}
 
 export class SignalizedTask {
   id: Task;

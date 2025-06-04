@@ -1,6 +1,6 @@
-import { moveTypes } from './move-type';
-import { moves } from './move';
 import { TaskGenerator } from '../task-generator';
+import { moves } from './move';
+import { moveTypes } from './move-type';
 
 export const tasks: TaskGenerator[] = [
   () => ``,

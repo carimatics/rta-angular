@@ -1,13 +1,11 @@
-import { Component, computed, input, InputSignal, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { Component, InputSignal, Signal, computed, input } from '@angular/core';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 
 @Component({
   selector: 'img[app-pokemon-img]',
-  imports: [
-    FormsModule,
-  ],
+  imports: [],
   host: {
     '[class]': 'hostClass()',
     '[width]': 'size()',
@@ -18,7 +16,7 @@ import { BaseComponent } from '../../../../lib/components/base.component';
   template: ``,
 })
 export class PokemonImgComponent extends BaseComponent {
-  pokemon = input.required<SignalizedPokemon>()
+  pokemon = input.required<SignalizedPokemon>();
   size = input<number>(80);
 
   id = computed(() => this.pokemon().id);

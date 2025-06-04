@@ -1,5 +1,5 @@
-import { Component, computed, input, InputSignal, output, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { ProgressInputComponent } from './progress-input.component';
@@ -7,11 +7,7 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
 
 @Component({
   selector: 'app-task-table',
-  imports: [
-    FormsModule,
-    ProgressInputComponent,
-    RequirementsIndicatorComponent,
-  ],
+  imports: [ProgressInputComponent, RequirementsIndicatorComponent],
   host: {
     '[class]': 'hostClass()',
   },
@@ -37,10 +33,7 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
             </td>
             <td class="flex justify-center p-2 pt-0">
               @if (taskNo < pokemon().normalTasks.length) {
-                <app-progress-input
-                  [task]="task"
-                  (updateProgress)="updateProgress.emit({ taskNo, progress: $event })"
-                />
+                <app-progress-input [task]="task" (updateProgress)="updateProgress.emit({ taskNo, progress: $event })" />
               } @else {
                 <div class="flex w-full justify-center gap-2 font-bold">
                   {{ pokemon().completed() ? '完成' : '未完成' }}
@@ -48,10 +41,7 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
               }
             </td>
             <td class="pb-2">
-              <app-requirements-indicator
-                [task]="task"
-                (updateProgress)="updateProgress.emit({ taskNo, progress: $event })"
-              />
+              <app-requirements-indicator [task]="task" (updateProgress)="updateProgress.emit({ taskNo, progress: $event })" />
             </td>
             <td class="w-16 pb-2 text-center font-bold">
               {{ task.points() }}
@@ -64,7 +54,7 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
 })
 export class TaskTableComponent extends BaseComponent {
   pokemon = input.required<SignalizedPokemon>();
-  updateProgress = output<{ taskNo: number, progress: number }>();
+  updateProgress = output<{ taskNo: number; progress: number }>();
 
   override class: InputSignal<string | undefined> = input<string>();
   override defaultClasses: Signal<string> = computed<string>(() => 'flex items-center gap-2');

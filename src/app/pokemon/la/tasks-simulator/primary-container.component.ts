@@ -1,18 +1,14 @@
-import { Component, computed, input, InputSignal, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, InputSignal, Signal, computed, input } from '@angular/core';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
 
 @Component({
   selector: 'app-primary-container',
-  imports: [
-    FormsModule,
-  ],
+  imports: [],
   host: {
     '[class]': 'hostClass()',
   },
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class PrimaryContainerComponent extends BaseComponent {
   override class: InputSignal<string | undefined> = input<string>();

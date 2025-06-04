@@ -242,4 +242,4 @@ export const Pokemon = {
   Shaymin: 241,
   Darkrai: 242,
 } as const;
-export type Pokemon = typeof Pokemon[keyof typeof Pokemon];
+export type Pokemon = (typeof Pokemon)[keyof typeof Pokemon];

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { HeaderComponent } from './header.component';
 
 @Component({
   selector: 'app-pokemon-la-page',
-  imports: [
-    RouterOutlet,
-    HeaderComponent
-  ],
+  imports: [RouterOutlet, HeaderComponent],
   template: `
     <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
       <app-header class="fixed top-0" />
@@ -17,8 +15,6 @@ import { HeaderComponent } from './header.component';
     </div>
   `,
 })
-export class PokemonLAPageComponent {
-
-}
+export class PokemonLAPageComponent {}
 
 export default PokemonLAPageComponent;

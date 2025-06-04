@@ -1,7 +1,7 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonLATasksSimulatorComponent } from './content.component';
-import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Page', () => {
   let component: PokemonLATasksSimulatorComponent;
@@ -10,7 +10,7 @@ describe('Page', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PokemonLATasksSimulatorComponent],
-      providers: [provideZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PokemonLATasksSimulatorComponent);

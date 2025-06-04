@@ -1,6 +1,6 @@
-import { Dictionary } from './base';
 import { Move, MoveType, Place, Pokemon, Segment, Task } from '../fixtures';
-import { moves, moveTypes, places, pokemons, segments, tasks } from '../fixtures/locales/ja';
+import { moveTypes, moves, places, pokemons, segments, tasks } from '../fixtures/locales/ja';
+import { Dictionary } from './base';
 
 export class JaDictionary implements Dictionary {
   move(id: Move): string {

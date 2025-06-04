@@ -4,9 +4,14 @@
   "singleQuote": true,
   "semi": true,
   "bracketSpacing": true,
-  "arrowParens": "avoid",
-  "trailingComma": "es5",
+  "arrowParens": "always",
+  "trailingComma": "all",
   "bracketSameLine": true,
   "printWidth": 150,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "importOrder": ["^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrderParserPlugins": ["decorators", "typescript"]
 }

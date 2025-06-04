@@ -9,6 +9,6 @@ export const routes: Routes = [
         path: 'pokemon',
         loadChildren: () => import('./pokemon/page.routes'),
       },
-    ]
+    ],
   },
 ];

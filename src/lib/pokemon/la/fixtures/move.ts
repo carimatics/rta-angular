@@ -151,4 +151,4 @@ export const Move = {
   SeedFlare: 150,
   DarkVoid: 151,
 } as const;
-export type Move = typeof Move[keyof typeof Move];
+export type Move = (typeof Move)[keyof typeof Move];

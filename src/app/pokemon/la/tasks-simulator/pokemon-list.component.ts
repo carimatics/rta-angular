@@ -1,52 +1,32 @@
-import { Component, computed, input, InputSignal, model, output, Signal } from '@angular/core';
+import { Component, InputSignal, Signal, computed, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { twMerge } from 'tailwind-merge';
+
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
-import {
-  PokemonListCardComponent
-} from './pokemon-list-card.component';
 import { SearchInputComponent } from '../../../../lib/components/search-input.component';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
 import { hiraganaToKatakana } from '../../../../lib/utils/change-case';
-import { twMerge } from 'tailwind-merge';
+import { PokemonListCardComponent } from './pokemon-list-card.component';
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [
-    FormsModule,
-    ButtonComponent,
-    PokemonListCardComponent,
-    SearchInputComponent,
-  ],
+  imports: [FormsModule, ButtonComponent, PokemonListCardComponent, SearchInputComponent],
   host: {
     '[class]': 'hostClass()',
   },
   template: `
     <div class="mx-4 my-2">
       <div class="flex">
-        <input
-          lib-search-input
-          type="search"
-          placeholder="Search"
-          [(ngModel)]="searchInputWord"
-        />
-        <button
-          lib-button
-          color="error"
-          class="ml-2"
-          (click)="onClickClear()"
-        >
-          クリア
-        </button>
+        <input lib-search-input type="search" placeholder="Search" [(ngModel)]="searchInputWord" />
+        <button lib-button color="error" class="ml-2" (click)="onClickClear()">クリア</button>
       </div>
     </div>
-    <div class="{{classListContainer()}}">
-      <ul class="{{classList()}}">
+    <div class="{{ classListContainer() }}">
+      <ul class="{{ classList() }}">
         @for (pokemon of filteredPokemons(); track pokemon.id) {
           <li class="mx-4 my-2">
-            <app-pokemon-list-card
-              [pokemon]="pokemon"
-              (click)="clickPokemon.emit(pokemon)" />
+            <app-pokemon-list-card [pokemon]="pokemon" (click)="clickPokemon.emit(pokemon)" />
           </li>
         }
       </ul>
@@ -59,10 +39,10 @@ export class PokemonListComponent extends BaseComponent {
   classListWidth = input<string>('w-80');
   classListHeight = input<string>('h-[calc(100vh-112px)]');
   classListContainer = computed(() => twMerge('my-1 overflow-y-scroll', this.classListHeight()));
-  classList = computed(() => twMerge('p-1', this.classListWidth()))
+  classList = computed(() => twMerge('p-1', this.classListWidth()));
 
   searchInputWord = model('');
-  searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()))
+  searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()));
 
   clickPokemon = output<SignalizedPokemon>();
 
@@ -72,10 +52,7 @@ export class PokemonListComponent extends BaseComponent {
       return this.pokedex();
     }
 
-    return this.pokedex().filter(pokemon =>
-      pokemon.name().includes(searchWord) ||
-      pokemon.id.toString().includes(searchWord)
-    );
+    return this.pokedex().filter((pokemon) => pokemon.name().includes(searchWord) || pokemon.id.toString().includes(searchWord));
   });
 
   override class: InputSignal<string | undefined> = input<string>();

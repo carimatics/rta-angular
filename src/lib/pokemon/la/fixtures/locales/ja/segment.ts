@@ -1,5 +1,5 @@
-import { places } from './place';
 import { Place } from '../../place';
+import { places } from './place';
 
 export const segments = [
   '',

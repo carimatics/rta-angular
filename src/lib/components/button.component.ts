@@ -1,5 +1,6 @@
 import { Component, computed, input } from '@angular/core';
-import { tv, VariantProps } from 'tailwind-variants';
+import { VariantProps, tv } from 'tailwind-variants';
+
 import { BaseComponent } from './base.component';
 
 const button = tv({
@@ -36,8 +37,7 @@ type ButtonVariants = VariantProps<typeof button>;
   selector: 'button[lib-button]',
   imports: [],
   host: { '[class]': 'hostClass()' },
-  template: `
-    <ng-content />`
+  template: `<ng-content />`,
 })
 export class ButtonComponent extends BaseComponent {
   color = input<ButtonVariants['color']>();
@@ -45,9 +45,11 @@ export class ButtonComponent extends BaseComponent {
   font = input<ButtonVariants['font']>();
 
   override class = input<string>();
-  override defaultClasses = computed<string>(() => button({
-    color: this.color(),
-    size: this.size(),
-    font: this.font()
-  }));
+  override defaultClasses = computed<string>(() =>
+    button({
+      color: this.color(),
+      size: this.size(),
+      font: this.font(),
+    }),
+  );
 }

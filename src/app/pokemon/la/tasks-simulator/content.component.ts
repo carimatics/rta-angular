@@ -38,7 +38,7 @@ import { TaskTableComponent } from './task-table.component';
               <app-segment-select [currentSegment]="service.currentSegment" [segments]="service.segments()" />
             </app-primary-container>
             <app-primary-container class="max-h-16">
-              <app-target-points-input [targetPoints]="targetPoints" />
+              <app-target-points-input [(targetPoints)]="targetPoints" />
             </app-primary-container>
           </section>
           <section class="mx-2 mb-4">

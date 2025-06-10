@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
 import { SearchInputComponent } from '../../../../lib/components/search-input.component';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator';
 import { hiraganaToKatakana } from '../../../../lib/utils/change-case';
 import { PokemonListCardComponent } from './pokemon-list-card.component';
 

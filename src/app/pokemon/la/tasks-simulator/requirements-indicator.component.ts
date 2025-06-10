@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator';
 import { RequirementsIndicatorButtonComponent } from './requirements-indicator-button.component';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, InputSignal, Signal, computed, input, output } from '@angula
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
-import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator';
 
 @Component({
   selector: 'app-progress-input',

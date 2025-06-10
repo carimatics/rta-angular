@@ -1,8 +1,8 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../../lib/components/button.component';
-import { createSignalizedPokedex } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { PokemonLaTasksSimulatorService } from '../../../../lib/pokemon/la/tasks-simulator';
 import { HeaderComponent } from '../header.component';
 import { PokemonInfoComponent } from './pokemon-info.component';
 import { PokemonListComponent } from './pokemon-list.component';
@@ -98,7 +98,7 @@ import { TaskTableComponent } from './task-table.component';
 export class PokemonLATasksSimulatorComponent {
   targetPoints = signal(8500);
 
-  service = createSignalizedPokedex();
+  service = inject(PokemonLaTasksSimulatorService);
 
   timelineSegments = computed(() => this.service.segments().filter((segment) => Object.hasOwn(this.service.pointsBySegment(), segment.id)));
 

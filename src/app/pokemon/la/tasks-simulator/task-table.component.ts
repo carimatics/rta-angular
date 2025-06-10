@@ -1,7 +1,7 @@
 import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator';
 import { ProgressInputComponent } from './progress-input.component';
 import { RequirementsIndicatorComponent } from './requirements-indicator.component';
 

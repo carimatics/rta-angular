@@ -3,7 +3,7 @@ import { MoveType } from './move-type';
 import { Pokemon } from './pokemon';
 import { Task } from './task';
 
-type Pokedex = Record<
+export type Pokedex = Record<
   Pokemon,
   {
     tasks: {
@@ -10774,4 +10774,4 @@ export const pokedex: Pokedex = {
       },
     ],
   },
-};
+} as const;

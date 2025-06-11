@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../../lib/components/button.component';
@@ -94,6 +94,7 @@ import { TaskTableComponent } from './task-table.component';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonLATasksSimulatorComponent {
   targetPoints = signal(8500);

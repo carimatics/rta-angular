@@ -1,4 +1,4 @@
-import { Component, InputSignal, Signal, WritableSignal, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, WritableSignal, computed, input } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { Segment } from '../../../../lib/pokemon/la/fixtures';
@@ -17,6 +17,7 @@ import { Segment } from '../../../../lib/pokemon/la/fixtures';
       }
     </select>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SegmentSelectComponent extends BaseComponent {
   segments = input.required<{ id: Segment; name: string }[]>();

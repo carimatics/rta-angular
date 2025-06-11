@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator';
@@ -36,6 +36,7 @@ import { RequirementsIndicatorButtonComponent } from './requirements-indicator-b
       }
     </ul>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequirementsIndicatorComponent extends BaseComponent {
   task = input.required<SignalizedTask>();

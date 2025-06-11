@@ -1,7 +1,7 @@
 import { Component, InputSignal, Signal, computed, input } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator';
 import { PokemonImgComponent } from './pokemon-img.component';
 
 @Component({

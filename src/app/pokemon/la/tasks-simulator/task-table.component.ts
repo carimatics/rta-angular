@@ -1,7 +1,7 @@
 import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator';
 import { ProgressInputComponent } from './progress-input.component';
 import { RequirementsIndicatorComponent } from './requirements-indicator.component';
 
@@ -32,7 +32,7 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
               {{ task.name() }}
             </td>
             <td class="flex justify-center p-2 pt-0">
-              @if (taskNo < pokemon().normalTasks.length) {
+              @if (!$last) {
                 <app-progress-input [task]="task" (updateProgress)="updateProgress.emit({ taskNo, progress: $event })" />
               } @else {
                 <div class="flex w-full justify-center gap-2 font-bold">
@@ -41,7 +41,9 @@ import { RequirementsIndicatorComponent } from './requirements-indicator.compone
               }
             </td>
             <td class="pb-2">
-              <app-requirements-indicator [task]="task" (updateProgress)="updateProgress.emit({ taskNo, progress: $event })" />
+              @if (!$last) {
+                <app-requirements-indicator [task]="task" (updateProgress)="updateProgress.emit({ taskNo, progress: $event })" />
+              }
             </td>
             <td class="w-16 pb-2 text-center font-bold">
               {{ task.points() }}

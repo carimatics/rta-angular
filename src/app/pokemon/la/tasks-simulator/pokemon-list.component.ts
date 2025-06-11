@@ -1,6 +1,5 @@
 import { Component, InputSignal, Signal, computed, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { twMerge } from 'tailwind-merge';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
@@ -22,8 +21,8 @@ import { PokemonListCardComponent } from './pokemon-list-card.component';
         <button lib-button color="error" class="ml-2" (click)="onClickClear()">クリア</button>
       </div>
     </div>
-    <div class="{{ classListContainer() }}">
-      <ul class="{{ classList() }}">
+    <div class="my-1">
+      <ul class="w-80 h-[calc(100vh-112px)] flex flex-col overflow-y-auto p-1">
         @for (pokemon of filteredPokemons(); track pokemon.id) {
           <li class="mx-4 my-2">
             <app-pokemon-list-card [pokemon]="pokemon" (click)="clickPokemon.emit(pokemon)" />
@@ -35,11 +34,6 @@ import { PokemonListCardComponent } from './pokemon-list-card.component';
 })
 export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();
-
-  classListWidth = input<string>('w-80');
-  classListHeight = input<string>('h-[calc(100vh-112px)]');
-  classListContainer = computed(() => twMerge('my-1 overflow-y-scroll', this.classListHeight()));
-  classList = computed(() => twMerge('p-1', this.classListWidth()));
 
   searchInputWord = model('');
   searchWord = computed(() => hiraganaToKatakana(this.searchInputWord()));

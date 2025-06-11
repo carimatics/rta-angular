@@ -26,8 +26,8 @@ import { TaskTableComponent } from './task-table.component';
     TargetPointsInputComponent,
   ],
   template: `
-    <div data-theme="pokemon-la" class="flex flex-col bg-surface-container">
-      <app-header class="fixed top-0" />
+    <div data-theme="pokemon-la" class="flex flex-col h-screen overflow-hidden bg-surface-container">
+      <app-header class="flex-none top-0" />
       <div class="flex">
         <aside class="flex w-80 flex-col">
           <app-pokemon-list [pokedex]="service.pokedex()" (clickPokemon)="service.currentPokemonId.set($event.id)" />

@@ -55,11 +55,10 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "outputHashing": "all"
+              "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
@@ -68,7 +67,7 @@
               "buildTarget": "rta:build:production"
             },
             "development": {
-              "buildTarget": "rta:build:production"
+              "buildTarget": "rta:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,9 +76,11 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:jest",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json"
+            "tsConfig": "tsconfig.spec.json",
+            "runner": "vitest",
+            "buildTarget": "::development"
           }
         },
         "lint": {

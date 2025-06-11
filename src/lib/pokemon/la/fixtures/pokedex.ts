@@ -3,15 +3,17 @@ import { MoveType } from './move-type';
 import { Pokemon } from './pokemon';
 import { Task } from './task';
 
-type Pokedex = Record<
+export interface PokedexTask {
+  readonly id: Task;
+  readonly option?: Move | MoveType;
+  readonly reward: number;
+  readonly requirements: number[];
+}
+
+export type Pokedex = Record<
   Pokemon,
   {
-    tasks: {
-      id: Task;
-      option?: Move | MoveType;
-      reward: number;
-      requirements: number[];
-    }[];
+    tasks: PokedexTask[];
   }
 >;
 
@@ -10774,4 +10776,4 @@ export const pokedex: Pokedex = {
       },
     ],
   },
-};
+} as const;

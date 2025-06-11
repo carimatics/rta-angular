@@ -1,11 +1,13 @@
+import { NgClass } from '@angular/common';
 import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
-import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokemon-la-tasks-simulator.service';
+import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator';
+import { RequirementsIndicatorButtonComponent } from './requirements-indicator-button.component';
 
 @Component({
   selector: 'app-requirements-indicator',
-  imports: [],
+  imports: [NgClass, RequirementsIndicatorButtonComponent],
   host: {
     '[class]': 'hostClass()',
   },
@@ -13,25 +15,22 @@ import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator/pokem
     <ul class="flex items-center justify-center">
       @for (requirement of task().requirements; track $index) {
         <li class="flex items-center justify-center font-bold">
+          @let achieved = progress() >= requirement;
           @if (requirement === task().first) {
-            <button
-              class="flex items-center justify-center size-7
-                bg-secondary text-on-secondary cursor-pointer rounded-full
-                {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
-              (click)="updateProgress.emit(requirement)">
-              {{ requirement }}
-            </button>
+            <app-requirements-indicator-button
+              [requirement]="requirement"
+              [achieved]="achieved"
+              (updateProgress)="updateProgress.emit(requirement)" />
           } @else {
             <div
-              class="bg-secondary h-1 w-2
-                {{ progress() >= requirement ? '' : 'brightness-75' }}"></div>
-            <button
-              class="flex items-center justify-center size-7
-                bg-secondary text-on-secondary cursor-pointer rounded-full
-                {{ progress() >= requirement ? 'hover:brightness-125' : 'brightness-75 hover:brightness-100' }}"
-              (click)="updateProgress.emit(requirement)">
-              {{ requirement }}
-            </button>
+              [ngClass]="{
+                'bg-secondary h-1 w-2': true,
+                'brightness-75': !achieved,
+              }"></div>
+            <app-requirements-indicator-button
+              [requirement]="requirement"
+              [achieved]="achieved"
+              (updateProgress)="updateProgress.emit(requirement)" />
           }
         </li>
       }

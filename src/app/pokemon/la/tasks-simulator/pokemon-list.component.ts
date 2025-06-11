@@ -34,10 +34,9 @@ import { PokemonListCardComponent } from './pokemon-list-card.component';
 })
 export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();
+  clickPokemon = output<SignalizedPokemon>();
 
   searchInputWord = model('');
-
-  clickPokemon = output<SignalizedPokemon>();
 
   override class: InputSignal<string | undefined> = input<string>();
   override defaultClasses: Signal<string> = computed<string>(() => '');

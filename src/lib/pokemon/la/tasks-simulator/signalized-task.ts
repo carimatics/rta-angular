@@ -2,7 +2,7 @@ import { Signal, WritableSignal, computed, signal } from '@angular/core';
 
 import { clamp } from '../../../utils/range';
 import { Dictionary } from '../dictionaries';
-import { Move, MoveType, Pokedex, Pokemon, Segment, Task } from '../fixtures';
+import { Move, MoveType, PokedexTask, Segment, Task } from '../fixtures';
 import { closedRangeSegments, rangeSegments } from '../utils/la-range';
 
 export class SignalizedTask {
@@ -31,7 +31,7 @@ export class SignalizedTask {
 
   constructor(
     readonly dictionary: Signal<Dictionary>,
-    readonly task: Pokedex[Pokemon]['tasks'][Task],
+    readonly task: PokedexTask,
   ) {
     this.id = task.id;
     this.option = task.option;

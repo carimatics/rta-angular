@@ -10,7 +10,9 @@
     "serve:ssr:rta": "node dist/rta/server/server.mjs",
     "lint": "ng lint",
     "format": "prettier --write ./src",
-    "check": "npm run format && npm run lint && npm run test"
+    "check": "npm run format && npm run lint && npm run test",
+    "ci:check": "npm run format && npm run lint && npm run test --no-watch --no-progress --browsers=ChromeHeadless",
+    "ci:build": "npm run ng build --base-href=/rta/ --configuration=production"
   },
   "dependencies": {
     "@angular/common": "^20.0.3",

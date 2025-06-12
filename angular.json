@@ -30,6 +30,7 @@
               "src/styles.css"
             ],
             "server": "src/main.server.ts",
+            "outputPath": "dist",
             "outputMode": "static",
             "outputHashing": "all",
             "ssr": {
@@ -91,6 +92,9 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

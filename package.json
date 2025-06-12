@@ -12,7 +12,7 @@
     "format": "prettier --write ./src",
     "check": "npm run format && npm run lint && npm run test",
     "ci:check": "npm run format && npm run lint && npm run test --no-watch --no-progress --browsers=ChromeHeadless",
-    "ci:build": "npm run ng build --omit=dev --deploy-url=/rta/ --base-href=/rta/ --configuration=production"
+    "ci:deploy": "ng deploy --base-href=/rta/"
   },
   "dependencies": {
     "@angular/common": "^20.0.3",
@@ -42,6 +42,7 @@
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.17.19",
+    "angular-cli-ghpages": "^2.0.3",
     "angular-eslint": "20.0.0",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",

@@ -11,7 +11,7 @@ import { SignalizedPokemon } from '../../../../lib/pokemon/la/tasks-simulator';
     '[width]': 'size()',
     '[height]': 'size()',
     '[alt]': 'name()',
-    '[src]': '`/pokemon/la/images/pokemon/${id()}.png`',
+    '[src]': '`/rta/pokemon/la/images/pokemon/${id()}.png`',
   },
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,

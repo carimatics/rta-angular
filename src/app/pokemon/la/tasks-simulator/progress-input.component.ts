@@ -1,4 +1,4 @@
-import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 import { ButtonComponent } from '../../../../lib/components/button.component';
@@ -45,6 +45,7 @@ import { SignalizedTask } from '../../../../lib/pokemon/la/tasks-simulator';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressInputComponent extends BaseComponent {
   task = input.required<SignalizedTask>();

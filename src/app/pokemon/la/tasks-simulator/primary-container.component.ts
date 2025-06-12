@@ -1,4 +1,4 @@
-import { Component, InputSignal, Signal, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 
@@ -8,7 +8,8 @@ import { BaseComponent } from '../../../../lib/components/base.component';
   host: {
     '[class]': 'hostClass()',
   },
-  template: ` <ng-content></ng-content> `,
+  template: `<ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PrimaryContainerComponent extends BaseComponent {
   override class: InputSignal<string | undefined> = input<string>();

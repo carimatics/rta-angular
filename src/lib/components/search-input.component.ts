@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { VariantProps, tv } from 'tailwind-variants';
 
 import { BaseComponent } from './base.component';
@@ -39,6 +39,7 @@ type SearchInputVariant = VariantProps<typeof searchInput>;
   imports: [],
   host: { '[class]': 'hostClass()' },
   template: `<ng-content />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputComponent extends BaseComponent {
   color = input<SearchInputVariant['color']>();

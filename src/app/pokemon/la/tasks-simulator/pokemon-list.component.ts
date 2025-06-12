@@ -1,4 +1,4 @@
-import { Component, InputSignal, Signal, computed, input, model, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
@@ -31,6 +31,7 @@ import { PokemonListCardComponent } from './pokemon-list-card.component';
       </ul>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonListComponent extends BaseComponent {
   pokedex = input.required<SignalizedPokemon[]>();

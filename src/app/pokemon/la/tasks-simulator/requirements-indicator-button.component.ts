@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, InputSignal, Signal, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input, output } from '@angular/core';
 
 import { BaseComponent } from '../../../../lib/components/base.component';
 
@@ -20,6 +20,7 @@ import { BaseComponent } from '../../../../lib/components/base.component';
       {{ requirement() }}
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequirementsIndicatorButtonComponent extends BaseComponent {
   requirement = input.required<number>();

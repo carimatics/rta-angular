@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { BaseComponent } from '../../../lib/components/base.component';
 
@@ -11,6 +11,7 @@ import { BaseComponent } from '../../../lib/components/base.component';
       <div class="ml-2 font-bold">へっだ〜</div>
     </header>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent extends BaseComponent {
   override class = input<string>();

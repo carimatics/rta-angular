@@ -10,7 +10,9 @@
     "serve:ssr:rta": "node dist/rta/server/server.mjs",
     "lint": "ng lint",
     "format": "prettier --write ./src",
-    "check": "npm run format && npm run lint && npm run test"
+    "check": "npm run format && npm run lint && npm run test",
+    "ci:check": "npm run format && npm run lint && ng test --no-watch --no-progress --browsers=ChromeHeadless",
+    "ci:build": "ng build --base-href=/rta/ --configuration=production"
   },
   "dependencies": {
     "@angular/common": "^20.0.3",
@@ -18,11 +20,8 @@
     "@angular/core": "^20.0.3",
     "@angular/forms": "^20.0.3",
     "@angular/platform-browser": "^20.0.3",
-    "@angular/platform-server": "^20.0.3",
     "@angular/router": "^20.0.3",
-    "@angular/ssr": "^20.0.2",
     "@tailwindcss/postcss": "^4.1.8",
-    "express": "^5.1.0",
     "postcss": "^8.5.4",
     "rxjs": "~7.8.0",
     "tailwind-merge": "^3.3.0",
@@ -37,9 +36,7 @@
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.3",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.17.19",
     "angular-eslint": "20.0.0",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
